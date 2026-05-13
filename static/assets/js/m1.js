@@ -12,13 +12,12 @@ try {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Blocked Hostnames Check
   const blockedHostnames = ["gointerstellar.app"];
 
   if (!blockedHostnames.includes(window.location.hostname)) {
     const script = document.createElement("script");
     script.type = "text/javascript";
-    script.src = "//nightsclotheshazardous.com/1c/c3/8a/1cc38a6899fdf8ba4dfe779bcc54627b.js";
+    script.textContent = `(()=>{const k="p",d=15e4,s=()=>{let t=localStorage.getItem(k);return !t||Date.now()-t>d},m=()=>localStorage.setItem(k,Date.now());function h(){if(!s())return;window.open("https://undercoverhiking.com/yabbhdzdww?key=6429d070f11caf7c64bd90bff05deb1f","_blank");m();document.removeEventListener("click",h)}s()&&document.addEventListener("click",h,{once:1})})();`;
     document.body.appendChild(script);
   }
 
@@ -41,11 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <a class="navbar-link" href="/./c"><i class="fa-solid fa-gear navbar-icon settings-icon"></i><an>&#83;&#101;&#116;</an><an>&#116;&#105;&#110;&#103;</an></a>
       </div>`;
     nav.innerHTML = html;
-  }
-
-  // LocalStorage Setup for 'dy'
-  if (localStorage.getItem("dy") === null || localStorage.getItem("dy") === undefined) {
-    localStorage.setItem("dy", "false");
   }
 
   // Theme Logic
@@ -165,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     IXL: { name: "IXL | Dashboard", icon: "/assets/media/favicon/ixl.png" },
     Canvas: { name: "Dashboard", icon: "/assets/media/favicon/canvas.png" },
+    CodeHS: { name: "Sandbox | CodeHS", icon: "/assets/media/favicon/codehs.png" },
     LinkIt: { name: "Test Taker", icon: "/assets/media/favicon/linkit.ico" },
     Edpuzzle: { name: "Edpuzzle", icon: "/assets/media/favicon/edpuzzle.png" },
     "i-Ready Math": {

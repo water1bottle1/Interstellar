@@ -46,13 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Dyn
 document.addEventListener("DOMContentLoaded", () => {
   function pChange(selectedValue) {
-    if (selectedValue === "uv") {
-      localStorage.setItem("uv", "true");
-      localStorage.setItem("dy", "false");
-    } else if (selectedValue === "dy") {
-      localStorage.setItem("uv", "false");
-      localStorage.setItem("dy", "true");
-    }
+    localStorage.setItem("pchoice", selectedValue);
   }
 
   const pChangeElement = document.getElementById("pChange");
@@ -63,10 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
       pChange(selectedOption);
     });
 
-    const storedP = localStorage.getItem("uv");
-    if (storedP === "true") {
-      pChangeElement.value = "uv";
-    } else if (localStorage.getItem("dy") === "true" || localStorage.getItem("dy") === "auto") {
+    const choice = localStorage.getItem("pchoice") || "sj";
+    if (choice === "sj") {
+      pChangeElement.value = "sj";
+    } else if (choice === "dy") {
       pChangeElement.value = "dy";
     } else {
       pChangeElement.value = "uv";
@@ -310,9 +304,9 @@ function EngineChange(dropdown) {
   const selectedEngine = dropdown.value;
 
   const engineUrls = {
+    Brave: "https://search.brave.com/search?q=",
     Google: "https://www.google.com/search?q=",
     Bing: "https://www.bing.com/search?q=",
-    DuckDuckGo: "https://duckduckgo.com/?q=",
     Qwant: "https://www.qwant.com/?q=",
     Startpage: "https://www.startpage.com/search?q=",
     SearchEncrypt: "https://www.searchencrypt.com/search/?q=",
@@ -421,6 +415,9 @@ function importSaveData() {
           Object.entries(data.localStorage).forEach(([key, value]) => {
             localStorage.setItem(key, value);
           });
+          if (typeof window.resolveProxyPchoice === "function") {
+            window.resolveProxyPchoice();
+          }
         }
         alert("Your save data has been imported. Please test it out.");
         alert("If you find any issues then report it in GitHub or the Interstellar Discord.");
